@@ -46,6 +46,11 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ApiResponse(exception.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<ApiResponse> handleIllegalArgumentException(IllegalArgumentException exception){
+        return new ResponseEntity<>(new ApiResponse(exception.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(ValueMismatchException.class)
     public final ResponseEntity<ApiResponse> handleValueMismatchException(ValueMismatchException exception){
         return new ResponseEntity<>(new ApiResponse(exception.getMessage()), HttpStatus.BAD_REQUEST);

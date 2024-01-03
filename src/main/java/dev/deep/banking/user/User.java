@@ -33,6 +33,7 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String phoneNumber;
+
     @Column(nullable = false)
     private boolean isNotBlocked;
 
