@@ -11,7 +11,7 @@ spring:
     password: Deep143@
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  #  Hibernate Config.
+  # Hibernate Config.
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,11 +19,28 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  main:
+    web-application-type: servlet
+
+  # Mail Service.
+  mail:
+    host: smtp.gmail.com
+    username: ${EMAIL}
+    password: ${PASSWORD}
+    properties:
+      "mail.smtp.socketFactory.port": 465
+      "mail.smtp.auth": true
+      "mail.smtp.socketFactory.class": javax.net.ssl.SSLSocketFactory
 
 # Security Config.
 application:
   security:
     jwt:
-      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      secret-key: ${JWT_SECRET}
       expiration: 86400000 # A Day
 
+# Sms Service.
+twilio:
+  account_sid: ${ACCOUNT_SID}
+  auth_token: ${AUTH_TOKEN}
+  trial_number: ${TRIAL_NUMBER}
