@@ -70,21 +70,21 @@ public class NotificationSenderService {
 
     public void sendCreditDebitSmsAlertToCustomer(CreditDebitSmsAlertTemplate template) {
         // Credit alert for receiver
-        final String receiverMessage = "Money Out! You have sent USD" + template.amountTransferred() +
-                " to " + template.receiverName() + ". You have USD" + template.senderAccountBalance();
-
-        smsSenderService.sendSms(new SmsNotification(
-                template.receiverPhoneNumber(),
-                receiverMessage
-        ));
-
-        // Debit alert for sender
         final String senderMessage = "Money In! You have been credited USD" + template.amountTransferred() +
                 " from " + template.senderName() + ". You have USD" + template.receiverAccountBalance();
 
         smsSenderService.sendSms(new SmsNotification(
                 template.receiverPhoneNumber(),
                 senderMessage
+        ));
+
+        // Debit alert for sender
+        final String receiverMessage = "Money Out! You have sent USD" + template.amountTransferred() +
+                " to " + template.receiverName() + ". You have USD" + template.senderAccountBalance();
+
+        smsSenderService.sendSms(new SmsNotification(
+                template.senderPhoneNumber(),
+                receiverMessage
         ));
     }
 }

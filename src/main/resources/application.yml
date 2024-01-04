@@ -25,8 +25,8 @@ spring:
   # Mail Service.
   mail:
     host: smtp.gmail.com
-    username: ${EMAIL}
-    password: ${PASSWORD}
+    username:
+    password:
     properties:
       "mail.smtp.socketFactory.port": 465
       "mail.smtp.auth": true
@@ -36,11 +36,11 @@ spring:
 application:
   security:
     jwt:
-      secret-key: ${JWT_SECRET}
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
       expiration: 86400000 # A Day
 
 # Sms Service.
 twilio:
-  account_sid: ${ACCOUNT_SID}
-  auth_token: ${AUTH_TOKEN}
-  trial_number: ${TRIAL_NUMBER}
+  accountSid:
+  authToken:
+  trialNumber:

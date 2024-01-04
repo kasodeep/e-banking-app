@@ -17,6 +17,18 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
+    private static final String[] WHITE_LIST_URL = {"/api/v1/users/**",
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html"};
+
     private final JwtFilter jwtAuthFilter;
 
     private final AuthenticationProvider authenticationProvider;
@@ -28,7 +40,7 @@ public class SecurityConfiguration {
 
         http.
                 authorizeHttpRequests(req ->
-                        req.requestMatchers("/api/v1/users/**")
+                        req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated());
