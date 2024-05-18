@@ -1,8 +1,7 @@
-package dev.deep.banking.transaction.response;
+package dev.deep.banking.transaction;
 
 import com.itextpdf.text.DocumentException;
 import dev.deep.banking.config.JwtService;
-import dev.deep.banking.transaction.TransactionService;
 import dev.deep.banking.transaction.request.FundsTransferRequest;
 import dev.deep.banking.transaction.request.TransactionHistoryRequest;
 import dev.deep.banking.universal.ApiResponse;

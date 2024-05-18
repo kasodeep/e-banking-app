@@ -36,7 +36,7 @@ public class UserController {
     @PutMapping("/change-password")
     public ResponseEntity<ApiResponse> changeUserPassword(@RequestHeader("Authorization") String jwt, @RequestBody @Validated ChangePasswordRequest request) {
         userService.changeUserPassword(request, jwtService.extractUserIdFromToken(jwt));
-        return new ResponseEntity<>(new ApiResponse("password changed"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse("Password changed"), HttpStatus.OK);
     }
 }
 

@@ -76,11 +76,6 @@ public class AccountService {
         updateAccount(userAccount);
     }
 
-    public void creditAccount(Account receiverAccount, BigDecimal amount) {
-        receiverAccount.setAccountBalance(receiverAccount.getAccountBalance().add(amount));
-        updateAccount(receiverAccount);
-    }
-
     public Account accountExistsAndIsActivated(String accountNumber) {
         Optional<Account> existingAccount = accountRepository.findAccountByAccountNumber(accountNumber);
 
@@ -91,9 +86,15 @@ public class AccountService {
         throw new ResourceNotFoundException("Account not found");
     }
 
+    public void creditAccount(Account receiverAccount, BigDecimal amount) {
+        receiverAccount.setAccountBalance(receiverAccount.getAccountBalance().add(amount));
+        updateAccount(receiverAccount);
+    }
+
     public void debitAccount(Account senderAccount, BigDecimal amount) {
         if (senderAccount.getAccountBalance().compareTo(amount) <= 0)
             throw new InsufficientBalanceException("Insufficient funds");
+
         senderAccount.setAccountBalance(senderAccount.getAccountBalance().subtract(amount));
         updateAccount(senderAccount);
     }
@@ -110,6 +111,7 @@ public class AccountService {
             accountNumber = random.nextInt(1_000_000_000);
             exists = accountRepository.existsByAccountNumber(String.format("%09d", accountNumber));
         } while (exists);
+        // if the number is less than 10 append 0's before.
         return String.format("%09d", accountNumber);
     }
 
