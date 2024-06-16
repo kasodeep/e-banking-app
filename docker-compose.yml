@@ -1,0 +1,37 @@
+services:
+  mysql:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_DATABASE: banking_app
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    networks:
+      - spring-boot-network
+
+  spring-boot-app:
+    container_name: banking-run
+    image: banking-app
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-boot-network
+    depends_on:
+      - mysql
+
+volumes:
+  data:
+
+networks:
+  spring-boot-network:
+    driver: bridge
+
+# docker-compose up - start the containers.
+# docker-compose -d up
+# docker-compose down - stop the containers.

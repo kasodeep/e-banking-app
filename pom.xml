@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dev.deep</groupId>
 	<artifactId>Banking-App</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>Banking-App</name>
 	<description>Complete Backend for Banking Application</description>
 	<properties>

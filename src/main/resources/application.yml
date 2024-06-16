@@ -6,10 +6,10 @@ server:
 spring:
   #  DB Configuration.
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/banking_app
-    username: Deep
-    password: Deep143@
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db:3306/banking_app
+    username: root
+    password: password
+    initialization-mode: always
 
   # Hibernate Config.
   jpa:
