@@ -1,3 +1,4 @@
+# running different services together.
 services:
   mysql:
     container_name: db
@@ -32,6 +33,6 @@ networks:
   spring-boot-network:
     driver: bridge
 
-# docker-compose up - start the containers.
-# docker-compose -d up
-# docker-compose down - stop the containers.
+# To start the containers -> docker-compose up
+# To start the containers detached -> docker-compose -d up
+# To stop the containers -> docker-compose down
